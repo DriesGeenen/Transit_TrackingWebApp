@@ -1,0 +1,70 @@
+.marginTop-20 {
+    margin-top: 20px;
+}
+.marginTop-100 {
+    margin-top: 100px;
+}
+.marginRight-20 {
+    margin-right: 20px;
+}
+.marginLeftRight {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+html, body {
+    background-image: url("dev/assets/truck.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container {
+    background-color: white;
+    height:100% !important;
+}
+#container {
+    height:100% !important;
+}
+.fill {
+    height:100% !important;
+}
+
+/* label focus color */
+.input-field input:focus + label {
+    color: #ed7010 !important;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+    border-bottom: 1px solid #ed7010 !important;
+    box-shadow: 0 1px 0 0 #ed7010 !important
+}
+
+.center-div {
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 350px;
+    background-color: #fcfcfc;
+    border-radius: 25px;
+}
+
+.mapContainer {
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 750px;
+    height: 500px;
+    background-color: #fcfcfc;
+    border-radius: 25px;
+}
+
+.map {
+
+}
