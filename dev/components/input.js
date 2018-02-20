@@ -20,6 +20,15 @@ class Input extends Component {
 
     render() {
         const { trackingCode } = this.state;
+        var output;
+
+        if(trackingCode === ""){
+            output = "";
+        } else {
+            output = (
+                <Link to={`/tracking/` + trackingCode} className="btn btn-primary orange darken-4">Toon mijn pakketje</Link>
+            );
+        }
 
         return (
             <div className="center-div">
@@ -28,7 +37,7 @@ class Input extends Component {
                     <label htmlFor="trackingCode">Tracking code:</label>
                     <input type="text" className="form-control input-field" name="trackingCode" value={trackingCode} onChange={this.onChange} placeholder="tracking code" />
                 </div>
-                <Link to={`/tracking/` + trackingCode} className="btn btn-primary orange darken-4">Toon mijn pakketje</Link>
+                {output}
             </div>
         );
     }

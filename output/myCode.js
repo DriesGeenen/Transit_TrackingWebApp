@@ -32080,6 +32080,17 @@ var Input = function (_Component) {
         value: function render() {
             var trackingCode = this.state.trackingCode;
 
+            var output;
+
+            if (trackingCode === "") {
+                output = "";
+            } else {
+                output = _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/tracking/' + trackingCode, className: 'btn btn-primary orange darken-4' },
+                    'Toon mijn pakketje'
+                );
+            }
 
             return _react2.default.createElement(
                 'div',
@@ -32099,11 +32110,7 @@ var Input = function (_Component) {
                     ),
                     _react2.default.createElement('input', { type: 'text', className: 'form-control input-field', name: 'trackingCode', value: trackingCode, onChange: this.onChange, placeholder: 'tracking code' })
                 ),
-                _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/tracking/' + trackingCode, className: 'btn btn-primary orange darken-4' },
-                    'Toon mijn pakketje'
-                )
+                output
             );
         }
     }]);
@@ -32158,7 +32165,8 @@ var Tracking = function (_Component) {
 
         _this2.state = {
             coordinates: [],
-            counter: 0
+            counter: 0,
+            success: false
         };
 
         _this2.updateCoordinates = _this2.updateCoordinates.bind(_this2);
@@ -32179,6 +32187,12 @@ var Tracking = function (_Component) {
             var _this3 = this;
 
             _axios2.default.get('http://localhost:6609/trackings/code/' + this.props.match.params.trackingCode).then(function (res) {
+                _this3.setState({ success: true });
+
+                if (res.data.success === false) {
+                    _this3.setState({ success: false });
+                    return false;
+                }
                 return _axios2.default.get('http://localhost:6604/trackings/driver/' + res.data.driver);
             }).then(function (res) {
                 _this3.setState({ coordinates: res.data.data });
@@ -32200,12 +32214,25 @@ var Tracking = function (_Component) {
         value: function render() {
             var longitude = "";
             var latitude = "";
+            var output = "";
 
             if (this.state.coordinates.length > 0) {
                 longitude = parseFloat(this.state.coordinates[this.state.counter].longitude);
                 latitude = parseFloat(this.state.coordinates[this.state.counter].latitude);
             }
 
+            if (this.state.success) {
+                output = _react2.default.createElement(_map2.default, {
+                    center: { lat: latitude, lng: longitude },
+                    zoom: 15
+                });
+            } else {
+                output = _react2.default.createElement(
+                    'p',
+                    null,
+                    'Ongeldige tracking code'
+                );
+            }
             return _react2.default.createElement(
                 'div',
                 { className: 'mapContainer' },
@@ -32217,10 +32244,7 @@ var Tracking = function (_Component) {
                 _react2.default.createElement(
                     'div',
                     { className: 'map marginLeftRight' },
-                    _react2.default.createElement(_map2.default, {
-                        center: { lat: latitude, lng: longitude },
-                        zoom: 15
-                    }),
+                    output,
                     _react2.default.createElement(
                         _reactRouterDom.Link,
                         { to: '/', className: 'btn btn-primary marginTop-20 orange darken-4' },
