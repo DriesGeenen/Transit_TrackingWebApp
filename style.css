@@ -27,12 +27,7 @@ html, body {
     height:100% !important;
 }
 
-/* label focus color */
-.input-field input:focus + label {
-    color: #ed7010 !important;
-}
-/* label underline focus color */
-.row .input-field input:focus {
+input.form-control.input-field:focus {
     border-bottom: 1px solid #ed7010 !important;
     box-shadow: 0 1px 0 0 #ed7010 !important
 }
@@ -63,8 +58,4 @@ html, body {
     height: 500px;
     background-color: #fcfcfc;
     border-radius: 25px;
-}
-
-.map {
-
 }

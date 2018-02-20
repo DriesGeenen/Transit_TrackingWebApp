@@ -26,9 +26,9 @@ class Input extends Component {
                 <h2>Where's my package?</h2>
                 <div className="form-group marginLeftRight">
                     <label htmlFor="trackingCode">Tracking code:</label>
-                    <input type="text" className="form-control" name="trackingCode" value={trackingCode} onChange={this.onChange} placeholder="tracking code" />
+                    <input type="text" className="form-control input-field" name="trackingCode" value={trackingCode} onChange={this.onChange} placeholder="tracking code" />
                 </div>
-                <button className="btn btn-primary"><Link to={`/tracking/` + trackingCode}>Toon mijn pakketje</Link></button>
+                <Link to={`/tracking/` + trackingCode} className="btn btn-primary orange darken-4">Toon mijn pakketje</Link>
             </div>
         );
     }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Map from "./gmap/map";
 
@@ -8,11 +9,17 @@ class Tracking extends Component {
 
         this.state = {
             coordinates:[],
-            longitude:'',
-            latitude:'',
-            test:''
+            counter:0
         };
 
+        this.updateCoordinates = this.updateCoordinates.bind(this);
+    }
+
+    updateCoordinates(){
+        if(this.state.counter+1 >= this.state.coordinates.length){
+            return 0;
+        }
+        return this.state.counter+1;
     }
 
     componentDidMount() {
@@ -22,6 +29,16 @@ class Tracking extends Component {
             }).then((res) => {
             this.setState({coordinates: res.data.data});
         });
+
+        var _this = this;
+        this.intervalId = setInterval(function() {
+            var newCounter = _this.updateCoordinates();
+            _this.setState({counter: newCounter });
+        }, 10000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.intervalId);
     }
 
     render() {
@@ -29,8 +46,8 @@ class Tracking extends Component {
         var latitude = "";
 
         if(this.state.coordinates.length > 0){
-                longitude = parseFloat(this.state.coordinates[0].longitude);
-                latitude = parseFloat(this.state.coordinates[0].latitude);
+                longitude = parseFloat(this.state.coordinates[this.state.counter].longitude);
+                latitude = parseFloat(this.state.coordinates[this.state.counter].latitude);
         }
 
         return (
@@ -41,6 +58,7 @@ class Tracking extends Component {
                         center={{lat: latitude, lng: longitude}}
                         zoom={15}
                     />
+                    <Link to={`/`} className="btn btn-primary marginTop-20 orange darken-4">Terug</Link>
                 </div>
             </div>
         );
