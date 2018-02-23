@@ -35,7 +35,7 @@ class Input extends Component {
                 <h2>Where's my package?</h2>
                 <div className="form-group marginLeftRight">
                     <label htmlFor="trackingCode">Tracking code:</label>
-                    <input type="text" className="form-control input-field" name="trackingCode" value={trackingCode} onChange={this.onChange} placeholder="tracking code" />
+                    <input type="text" className="form-control input-field center" name="trackingCode" value={trackingCode} onChange={this.onChange} placeholder="tracking code" />
                 </div>
                 {output}
             </div>
