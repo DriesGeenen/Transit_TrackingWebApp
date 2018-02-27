@@ -32088,7 +32088,7 @@ var Input = function (_Component) {
                 output = _react2.default.createElement(
                     _reactRouterDom.Link,
                     { to: '/tracking/' + trackingCode, className: 'btn btn-primary orange darken-4' },
-                    'Toon mijn pakketje'
+                    'Show my package'
                 );
             }
 
@@ -32202,7 +32202,7 @@ var Tracking = function (_Component) {
             this.intervalId = setInterval(function () {
                 var newCounter = _this.updateCoordinates();
                 _this.setState({ counter: newCounter });
-            }, 10000);
+            }, 5000);
         }
     }, {
         key: 'componentWillUnmount',
@@ -32230,7 +32230,7 @@ var Tracking = function (_Component) {
                 output = _react2.default.createElement(
                     'p',
                     null,
-                    'Ongeldige tracking code'
+                    'Invalid tracking code'
                 );
             }
             return _react2.default.createElement(
@@ -32248,7 +32248,7 @@ var Tracking = function (_Component) {
                     _react2.default.createElement(
                         _reactRouterDom.Link,
                         { to: '/', className: 'btn btn-primary marginTop-20 orange darken-4' },
-                        'Terug'
+                        'Back'
                     )
                 )
             );

@@ -41,7 +41,7 @@ class Tracking extends Component {
         this.intervalId = setInterval(function() {
             var newCounter = _this.updateCoordinates();
             _this.setState({counter: newCounter });
-        }, 10000);
+        }, 5000);
     }
 
     componentWillUnmount(){
@@ -67,7 +67,7 @@ class Tracking extends Component {
             );
         } else {
             output = (
-                <p>Ongeldige tracking code</p>
+                <p>Invalid tracking code</p>
             );
         }
         return (
@@ -75,7 +75,7 @@ class Tracking extends Component {
                 <h2>Your package is right here</h2>
                 <div className="map marginLeftRight">
                     {output}
-                    <Link to={`/`} className="btn btn-primary marginTop-20 orange darken-4">Terug</Link>
+                    <Link to={`/`} className="btn btn-primary marginTop-20 orange darken-4">Back</Link>
                 </div>
             </div>
         );

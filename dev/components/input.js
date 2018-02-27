@@ -26,7 +26,7 @@ class Input extends Component {
             output = "";
         } else {
             output = (
-                <Link to={`/tracking/` + trackingCode} className="btn btn-primary orange darken-4">Toon mijn pakketje</Link>
+                <Link to={`/tracking/` + trackingCode} className="btn btn-primary orange darken-4">Show my package</Link>
             );
         }
 
